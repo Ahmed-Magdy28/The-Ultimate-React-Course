@@ -1,0 +1,107 @@
+/* App.css */
+
+/* General reset */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9fafb;
+  color: #333;
+  margin: 0;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+#root {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4f46e5;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #4f46e5;
+  border-radius: 2px;
+  margin: 0.5rem auto 0;
+}
+
+/* Wrapper for each section */
+div {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+/* Input fields */
+input[type="number"],
+select {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-top: 0.4rem;
+  transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+input[type="number"]:focus,
+select:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+  outline: none;
+}
+
+/* Result text */
+h3 {
+  font-size: 1.25rem;
+  color: #111827;
+  text-align: center;
+  background: #e0f2fe;
+  padding: 0.8rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* Button */
+button {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out, transform 0.1s ease-in-out;
+  display: block;
+  margin: 0 auto;
+}
+
+button:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+}
+
+button:active {
+  background: #3730a3;
+  transform: translateY(0);
+}
