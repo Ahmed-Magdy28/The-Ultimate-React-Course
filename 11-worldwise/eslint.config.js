@@ -8,6 +8,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import importPlugin from 'eslint-plugin-import';
 import prettier from 'eslint-plugin-prettier';
 import reactRefresh from 'eslint-plugin-react-refresh';
+import vitest from 'eslint-plugin-vitest';
 
 export default tseslint.config(
    js.configs.recommended,
@@ -17,6 +18,10 @@ export default tseslint.config(
       ignores: [
          'vite.config.ts', // ignore config file if you don’t want it linted
          'node_modules/**',
+         'node_modules',
+         'dist',
+         'coverage',
+         'vite.config.ts',
          'dist/**',
       ],
       languageOptions: {
@@ -34,6 +39,7 @@ export default tseslint.config(
          'react-hooks': reactHooks,
          'jsx-a11y': jsxA11y,
          import: importPlugin,
+         vitest,
          prettier,
          'react-refresh': reactRefresh,
       },
@@ -55,7 +61,7 @@ export default tseslint.config(
 
          // TypeScript
          '@typescript-eslint/no-unused-vars': [
-            'error',
+            'warn',
             { argsIgnorePattern: '^_' },
          ],
          '@typescript-eslint/explicit-function-return-type': 'off',
