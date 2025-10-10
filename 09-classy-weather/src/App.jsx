@@ -2,23 +2,34 @@ import { Component } from 'react';
 import { convertToFlag, formatDay, getWeatherIcon } from './logic/helper';
 
 class App extends Component {
-   constructor(props) {
-      super(props);
-      this.state = {
-         location: 'cairo',
-         isLoading: false,
-         displayLocation: '',
-         weather: {},
-      };
-      this.handleInputChange = this.handleInputChange.bind(this);
-      this.fetchWeather = this.fetchWeather.bind(this);
+   state = {
+      location: '',
+      isLoading: false,
+      displayLocation: '',
+      weather: {},
+   };
+
+   componentDidMount() {
+      localStorage.getItem('location') &&
+         this.setState({ location: localStorage.getItem('location') || '' });
+      // this.fetchWeather();
    }
 
-   handleInputChange(event) {
+   componentDidUpdate(prevProps, prevState) {
+      if (prevState.location !== this.state.location) {
+         localStorage.setItem('location', this.state.location);
+         this.fetchWeather();
+      }
+   }
+
+   handleInputChange = (event) => {
       this.setState({ location: event.target.value });
-   }
+      // this.fetchWeather();
+   };
 
-   async fetchWeather() {
+   fetchWeather = async () => {
+      if (!this.state.location || this.state.location.length < 3)
+         return this.setState({ weather: {} });
       try {
          this.setState({ isLoading: true });
          // 1) Getting location (geocoding)
@@ -42,13 +53,19 @@ class App extends Component {
             `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&timezone=${timezone}&daily=weathercode,temperature_2m_max,temperature_2m_min`
          );
          const weatherData = await weatherRes.json();
-         this.setState({ weather: weatherData.daily });
+         this.setState({
+            weather: weatherData.daily,
+            country_code: country_code,
+         });
       } catch (err) {
-         console.error(err);
+         if (err.message === 'Location not found') {
+            // alert('Location not found! Please try again.');
+            // this.setState({ location: '' });
+         } else console.error(err);
       } finally {
          this.setState({ isLoading: false });
       }
-   }
+   };
 
    render() {
       return (
@@ -62,11 +79,14 @@ class App extends Component {
                   onChange={(e) => this.handleInputChange(e)}
                />
             </div>
-            <button onClick={this.fetchWeather}>Get Weather</button>
+            {/* <button className="btn" onClick={this.fetchWeather}>
+               Get Weather
+            </button> */}
             {this.state.isLoading && <p className="loader">Loading....</p>}
             {this.state.weather.weathercode && (
                <Weather
                   weather={this.state.weather}
+                  displayLocation={this.state.displayLocation}
                   location={this.state.location}
                />
             )}
@@ -78,9 +98,7 @@ class App extends Component {
 export default App;
 
 class Weather extends Component {
-   constructor(props) {
-      super(props);
-   }
+   componentWillUnmount() {}
 
    render() {
       const {
@@ -90,9 +108,10 @@ class Weather extends Component {
          weathercode: codes,
       } = this.props.weather;
       const location = this.props.location;
+      const displayLocation = this.props.displayLocation;
       return (
          <div>
-            <h2>Weather in {location}</h2>
+            <h2>Weather in {!displayLocation ? location : displayLocation}</h2>
             <ul className="weather">
                {dates.map((date, index) => (
                   <Day

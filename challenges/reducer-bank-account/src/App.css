@@ -1,0 +1,99 @@
+/* 🌍 General reset and typography */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🏦 App container */
+.App {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  animation: fadeIn 0.4s ease-in;
+}
+
+/* ✨ Animation for entry */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 💰 Headings and account info */
+.App h1 {
+  font-size: 1.6rem;
+  color: #0077ff;
+  margin-bottom: 1.2rem;
+}
+
+.App p {
+  font-size: 1.05rem;
+  margin-bottom: 0.8rem;
+}
+
+.App p:nth-of-type(1),
+.App p:nth-of-type(2) {
+  font-weight: 600;
+}
+
+/* 🧩 Buttons */
+button {
+  background-color: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.25s ease;
+}
+
+button:hover:not(:disabled) {
+  background-color: #005fd1;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  background-color: #c7d2e0;
+  color: #777;
+  cursor: not-allowed;
+}
+
+/* 📱 Responsive design */
+@media (min-width: 768px) {
+  .App {
+    max-width: 420px;
+    padding: 2.5rem;
+  }
+
+  button {
+    font-size: 1.05rem;
+  }
+}

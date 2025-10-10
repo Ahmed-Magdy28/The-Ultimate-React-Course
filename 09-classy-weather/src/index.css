@@ -28,14 +28,22 @@ body {
 }
 
 .btn {
-  width: 10rem;
-  height: 10rem;
-  font-size: 4rem;
+  width: 12rem;
+  height: 3.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   border: none;
   background-color: #f0d2ce;
   cursor: pointer;
 
+}
+
+.btn:focus {
+  outline: 2px solid #222;
+}
+
+.btn:hover {
+  background-color: #ecc5c0;
 }
 
 
