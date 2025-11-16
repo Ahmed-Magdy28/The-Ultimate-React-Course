@@ -51,6 +51,7 @@ export default tseslint.config(
          'react/jsx-uses-react': 'off',
          'react/prop-types': 'off',
          'react-refresh/only-export-components': 'warn',
+         '@typescript-eslint/no-explicit-any': 'warn',
 
          // Import and accessibility
          'import/order': [

@@ -16,7 +16,9 @@
       /* Linting & Safety */
       "strict": true,
       "forceConsistentCasingInFileNames": true,
+      "allowSyntheticDefaultImports": true,
       "noUnusedLocals": false,
+      "checkJs": true,
       "noUnusedParameters": false,
       "erasableSyntaxOnly": true,
       "noFallthroughCasesInSwitch": true,
