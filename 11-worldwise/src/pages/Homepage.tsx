@@ -1,8 +1,18 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from './Homepage.module.css';
 import PageNav from '../components/NavComponents/PageNav';
+import { useAuthContex } from '../contexts/contexts';
+import Button from '../components/AppComponents/Button/Button';
 
 export default function Homepage() {
+   const { isAuthenticated } = useAuthContex();
+   const navigate = useNavigate();
+
+   function handleClick() {
+      if (isAuthenticated) navigate('/app');
+      else navigate('/login');
+   }
+
    return (
       <main className={styles.homepage}>
          <PageNav />
@@ -17,9 +27,10 @@ export default function Homepage() {
                think of. Never forget your wonderful experiences, and show your
                friends how you have wandered the world.
             </h2>
-            <Link to="/app" className="cta">
-               Statrt tracking now
-            </Link>
+
+            <Button type={'cta'} onClick={handleClick}>
+               Start tracking now
+            </Button>
          </section>
       </main>
    );

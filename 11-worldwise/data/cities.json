@@ -4,61 +4,577 @@
       "cityName": "Lisbon",
       "country": "Portugal",
       "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
+      "date": "2027-01-14T10:11:00.000Z",
+      "notes": "Sunny and relaxing",
       "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
+        "lat": 38.7223,
+        "lng": -9.1393
       },
-      "id": 73930385
+      "id": 10001
     },
     {
       "cityName": "Madrid",
       "country": "Spain",
       "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
+      "date": "2027-01-20T12:45:00.000Z",
+      "notes": "Great food",
+      "position": {
+        "lat": 40.4168,
+        "lng": -3.7038
+      },
+      "id": 10002
+    },
+    {
+      "cityName": "Berlin",
+      "country": "Germany",
+      "emoji": "🇩🇪",
+      "date": "2027-01-22T14:00:00.000Z",
+      "notes": "Loved the history",
+      "position": {
+        "lat": 52.52,
+        "lng": 13.405
+      },
+      "id": 10003
+    },
+    {
+      "cityName": "Paris",
+      "country": "France",
+      "emoji": "🇫🇷",
+      "date": "2027-01-25T09:00:00.000Z",
+      "notes": "City of love",
+      "position": {
+        "lat": 48.8566,
+        "lng": 2.3522
+      },
+      "id": 10004
+    },
+    {
+      "cityName": "Rome",
+      "country": "Italy",
+      "emoji": "🇮🇹",
+      "date": "2027-02-01T16:00:00.000Z",
+      "notes": "Pizza heaven",
+      "position": {
+        "lat": 41.9028,
+        "lng": 12.4964
+      },
+      "id": 10005
+    },
+    {
+      "cityName": "Athens",
+      "country": "Greece",
+      "emoji": "🇬🇷",
+      "date": "2027-02-10T10:30:00.000Z",
       "notes": "",
       "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
+        "lat": 37.9838,
+        "lng": 23.7275
       },
-      "id": 17806751
+      "id": 10006
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
+      "cityName": "Amsterdam",
+      "country": "Netherlands",
+      "emoji": "🇳🇱",
+      "date": "2027-02-14T11:00:00.000Z",
+      "notes": "",
       "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
+        "lat": 52.3676,
+        "lng": 4.9041
       },
-      "id": 98443197
+      "id": 10007
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
+      "cityName": "Brussels",
+      "country": "Belgium",
+      "emoji": "🇧🇪",
+      "date": "2027-02-20T15:00:00.000Z",
+      "notes": "",
       "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
+        "lat": 50.8503,
+        "lng": 4.3517
       },
-      "id": 98413197
+      "id": 10008
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
+      "cityName": "Vienna",
+      "country": "Austria",
+      "emoji": "🇦🇹",
+      "date": "2027-02-25T12:00:00.000Z",
+      "notes": "Super clean",
       "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
+        "lat": 48.2082,
+        "lng": 16.3738
       },
-      "id": 984123197
+      "id": 10009
+    },
+    {
+      "cityName": "Prague",
+      "country": "Czech Republic",
+      "emoji": "🇨🇿",
+      "date": "2027-03-02T17:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 50.0755,
+        "lng": 14.4378
+      },
+      "id": 10010
+    },
+    {
+      "cityName": "Warsaw",
+      "country": "Poland",
+      "emoji": "🇵🇱",
+      "date": "2027-03-05T09:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 52.2297,
+        "lng": 21.0122
+      },
+      "id": 10011
+    },
+    {
+      "cityName": "Budapest",
+      "country": "Hungary",
+      "emoji": "🇭🇺",
+      "date": "2027-03-10T13:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 47.4979,
+        "lng": 19.0402
+      },
+      "id": 10012
+    },
+    {
+      "cityName": "Zurich",
+      "country": "Switzerland",
+      "emoji": "🇨🇭",
+      "date": "2027-03-15T10:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 47.3769,
+        "lng": 8.5417
+      },
+      "id": 10013
+    },
+    {
+      "cityName": "London",
+      "country": "United Kingdom",
+      "emoji": "🇬🇧",
+      "date": "2027-03-20T14:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 51.5072,
+        "lng": -0.1276
+      },
+      "id": 10014
+    },
+    {
+      "cityName": "Dublin",
+      "country": "Ireland",
+      "emoji": "🇮🇪",
+      "date": "2027-03-25T18:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 53.3498,
+        "lng": -6.2603
+      },
+      "id": 10015
+    },
+    {
+      "cityName": "Oslo",
+      "country": "Norway",
+      "emoji": "🇳🇴",
+      "date": "2027-04-01T11:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 59.9139,
+        "lng": 10.7522
+      },
+      "id": 10016
+    },
+    {
+      "cityName": "Stockholm",
+      "country": "Sweden",
+      "emoji": "🇸🇪",
+      "date": "2027-04-05T14:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 59.3293,
+        "lng": 18.0686
+      },
+      "id": 10017
+    },
+    {
+      "cityName": "Helsinki",
+      "country": "Finland",
+      "emoji": "🇫🇮",
+      "date": "2027-04-10T15:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 60.1699,
+        "lng": 24.9384
+      },
+      "id": 10018
+    },
+    {
+      "cityName": "Copenhagen",
+      "country": "Denmark",
+      "emoji": "🇩🇰",
+      "date": "2027-04-13T16:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 55.6761,
+        "lng": 12.5683
+      },
+      "id": 10019
+    },
+    {
+      "cityName": "Reykjavik",
+      "country": "Iceland",
+      "emoji": "🇮🇸",
+      "date": "2027-04-17T09:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 64.1466,
+        "lng": -21.9426
+      },
+      "id": 10020
+    },
+    {
+      "cityName": "Cairo",
+      "country": "Egypt",
+      "emoji": "🇪🇬",
+      "date": "2027-04-20T10:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 30.0444,
+        "lng": 31.2357
+      },
+      "id": 10021
+    },
+    {
+      "cityName": "Dubai",
+      "country": "United Arab Emirates",
+      "emoji": "🇦🇪",
+      "date": "2027-04-25T12:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 25.2048,
+        "lng": 55.2708
+      },
+      "id": 10022
+    },
+    {
+      "cityName": "Doha",
+      "country": "Qatar",
+      "emoji": "🇶🇦",
+      "date": "2027-04-30T11:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 25.2854,
+        "lng": 51.531
+      },
+      "id": 10023
+    },
+    {
+      "cityName": "Riyadh",
+      "country": "Saudi Arabia",
+      "emoji": "🇸🇦",
+      "date": "2027-05-03T13:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 24.7136,
+        "lng": 46.6753
+      },
+      "id": 10024
+    },
+    {
+      "cityName": "Tokyo",
+      "country": "Japan",
+      "emoji": "🇯🇵",
+      "date": "2027-05-08T10:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 35.6762,
+        "lng": 139.6503
+      },
+      "id": 10025
+    },
+    {
+      "cityName": "Seoul",
+      "country": "South Korea",
+      "emoji": "🇰🇷",
+      "date": "2027-05-10T11:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 37.5665,
+        "lng": 126.978
+      },
+      "id": 10026
+    },
+    {
+      "cityName": "Beijing",
+      "country": "China",
+      "emoji": "🇨🇳",
+      "date": "2027-05-15T12:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 39.9042,
+        "lng": 116.4074
+      },
+      "id": 10027
+    },
+    {
+      "cityName": "Bangkok",
+      "country": "Thailand",
+      "emoji": "🇹🇭",
+      "date": "2027-05-20T14:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 13.7563,
+        "lng": 100.5018
+      },
+      "id": 10028
+    },
+    {
+      "cityName": "Singapore",
+      "country": "Singapore",
+      "emoji": "🇸🇬",
+      "date": "2027-05-25T15:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 1.3521,
+        "lng": 103.8198
+      },
+      "id": 10029
+    },
+    {
+      "cityName": "Sydney",
+      "country": "Australia",
+      "emoji": "🇦🇺",
+      "date": "2027-06-01T09:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": -33.8688,
+        "lng": 151.2093
+      },
+      "id": 10030
+    },
+    {
+      "cityName": "Melbourne",
+      "country": "Australia",
+      "emoji": "🇦🇺",
+      "date": "2027-06-05T10:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": -37.8136,
+        "lng": 144.9631
+      },
+      "id": 10031
+    },
+    {
+      "cityName": "New York",
+      "country": "United States",
+      "emoji": "🇺🇸",
+      "date": "2027-06-10T11:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 40.7128,
+        "lng": -74.006
+      },
+      "id": 10032
+    },
+    {
+      "cityName": "Los Angeles",
+      "country": "United States",
+      "emoji": "🇺🇸",
+      "date": "2027-06-15T10:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 34.0522,
+        "lng": -118.2437
+      },
+      "id": 10033
+    },
+    {
+      "cityName": "Toronto",
+      "country": "Canada",
+      "emoji": "🇨🇦",
+      "date": "2027-06-20T13:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 43.6532,
+        "lng": -79.3832
+      },
+      "id": 10034
+    },
+    {
+      "cityName": "Vancouver",
+      "country": "Canada",
+      "emoji": "🇨🇦",
+      "date": "2027-06-25T14:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 49.2827,
+        "lng": -123.1207
+      },
+      "id": 10035
+    },
+    {
+      "cityName": "Mexico City",
+      "country": "Mexico",
+      "emoji": "🇲🇽",
+      "date": "2027-07-01T12:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": 19.4326,
+        "lng": -99.1332
+      },
+      "id": 10036
+    },
+    {
+      "cityName": "São Paulo",
+      "country": "Brazil",
+      "emoji": "🇧🇷",
+      "date": "2027-07-05T16:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": -23.5505,
+        "lng": -46.6333
+      },
+      "id": 10037
+    },
+    {
+      "cityName": "Buenos Aires",
+      "country": "Argentina",
+      "emoji": "🇦🇷",
+      "date": "2027-07-10T11:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": -34.6037,
+        "lng": -58.3816
+      },
+      "id": 10038
+    },
+    {
+      "cityName": "Cape Town",
+      "country": "South Africa",
+      "emoji": "🇿🇦",
+      "date": "2027-07-15T12:00:00.000Z",
+      "notes": "",
+      "position": {
+        "lat": -33.9249,
+        "lng": 18.4241
+      },
+      "id": 10039
+    },
+    {
+      "cityName": "Hun",
+      "country": "Libya",
+      "emoji": "🇱🇾",
+      "date": "2025-11-18",
+      "notes": "Test",
+      "position": {
+        "lat": 26.70635985763354,
+        "lng": 17.797851562500004
+      },
+      "id": 10040
+    },
+    {
+      "cityName": "In Salah",
+      "country": "Algeria",
+      "emoji": "🇩🇿",
+      "date": "2025-11-10",
+      "notes": "",
+      "position": {
+        "lat": 27.68352808378776,
+        "lng": 2.9882812500000004
+      },
+      "id": 10041
+    },
+    {
+      "cityName": "Dire",
+      "country": "Mali",
+      "emoji": "🇲🇱",
+      "date": "2025-11-10",
+      "notes": "",
+      "position": {
+        "lat": 16.04581345375218,
+        "lng": -3.251953125
+      },
+      "id": 10042
+    },
+    {
+      "cityName": "Karoo Hoogland",
+      "country": "South Africa",
+      "emoji": "🇿🇦",
+      "date": "2025-11-18",
+      "notes": "test",
+      "position": {
+        "lat": -32.0546446905493,
+        "lng": 21.9012451171875
+      },
+      "id": 10043
+    },
+    {
+      "cityName": "Jamai",
+      "country": "India",
+      "emoji": "🇮🇳",
+      "date": "2025-11-24",
+      "notes": "Test",
+      "position": {
+        "lat": 22.268764039073968,
+        "lng": 78.57421875000001
+      },
+      "id": 10044
+    },
+    {
+      "cityName": "Kukshi",
+      "country": "India",
+      "emoji": "🇮🇳",
+      "date": "2025-11-12",
+      "notes": "",
+      "position": {
+        "lat": 22.217920166311025,
+        "lng": 74.67407226562501
+      },
+      "id": 10046
+    },
+    {
+      "cityName": "Lusambo",
+      "country": "Congo (the Democratic Republic of the)",
+      "emoji": "🇨🇩",
+      "date": "2025-11-14",
+      "notes": "",
+      "position": {
+        "lat": -4.915832801313164,
+        "lng": 23.73046875
+      },
+      "id": 10047
+    },
+    {
+      "cityName": "Tadmur",
+      "country": "Syrian Arab Republic (the)",
+      "emoji": "🇸🇾",
+      "date": "2025-11-13",
+      "notes": "",
+      "position": {
+        "lat": 34.813803317113155,
+        "lng": 38.0126953125
+      },
+      "id": 10048
+    },
+    {
+      "cityName": "Evenkiyskiy Rayon",
+      "country": "Russian Federation (the)",
+      "emoji": "🇷🇺",
+      "date": "2025-11-29",
+      "notes": "",
+      "position": {
+        "lat": 62.99515845212052,
+        "lng": 93.33984375000001
+      },
+      "id": 10050
     }
   ]
 }

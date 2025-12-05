@@ -1,0 +1,106 @@
+:root,
+[data-theme='light'],
+.light {
+    --border-color: #d1d5db;
+    --border-color-active: #3b82f6;
+    --input-bg: #ffffff;
+    --text-color: #111827;
+    --muted-color: #6b7280;
+    --panel-bg: #ffffff;
+    --panel-border: #e5e7eb;
+    --panel-shadow: rgba(15, 23, 42, 0.12);
+    --day-hover-bg: rgba(59, 130, 246, 0.12);
+    --accent: #3b82f6;
+}
+
+[data-theme='dark'],
+.dark {
+    --border-color: #374151;
+    --border-color-active: #2563eb;
+    --input-bg: #1f2937;
+    --text-color: #f3f4f6;
+    --muted-color: #9ca3af;
+    --panel-bg: #111827;
+    --panel-border: #374151;
+    --panel-shadow: rgba(0, 0, 0, 0.5);
+    --day-hover-bg: rgba(37, 99, 235, 0.16);
+    --accent: #60a5fa;
+}
+
+.popover {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dateInput {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color, #d1d5db);
+    border-radius: 6px;
+    background: var(--input-bg, #ffffff);
+    color: var(--text-color, #111827);
+    cursor: text;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.dateInput:focus {
+    border-color: var(--border-color-active, #3b82f6);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    background-color: #d6dee0;
+}
+
+
+
+.popoverPanel .rdp-caption,
+.popoverPanel .rdp-weekday {
+    color: var(--muted-color, #6b7280);
+    font-size: 0.95em;
+    /* slightly larger header/weekday text */
+}
+
+.popoverPanel .rdp-nav_button {
+    color: var(--text-color, #111827);
+}
+
+.popoverPanel .rdp-day {
+    color: var(--text-color, #111827);
+    font-size: 1em;
+    /* make day numbers clearer */
+}
+
+.popoverPanel .rdp-day:hover,
+.popoverPanel .rdp-day:focus-visible {
+    background-color: var(--day-hover-bg, rgba(59, 130, 246, 0.12));
+    border-radius: 999px;
+    color: var(--text-color, #111827);
+}
+
+.popoverPanel .rdp-day_selected,
+.popoverPanel .rdp-day_selected:hover {
+    background-color: var(--accent, #3b82f6);
+    color: #ffffff;
+    border-radius: 999px;
+}
+
+.popoverPanel .rdp-day_disabled {
+    color: var(--muted-color, #9ca3af);
+    opacity: 0.6;
+}
+
+@media (max-width: 640px) {
+    .popover {
+        width: 100%;
+    }
+
+    .popoverPanel {
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(320px, 95vw);
+    }
+}

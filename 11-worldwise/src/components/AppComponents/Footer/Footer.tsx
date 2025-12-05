@@ -3,7 +3,7 @@ export default function Footer() {
    return (
       <footer className={styles.footer}>
          <p className={styles.copyright}>
-            &copy; Copyright {new Date().getFullYear()}
+            Ahmed Magdy&copy; Copyright {new Date().getFullYear()}
          </p>
       </footer>
    );
