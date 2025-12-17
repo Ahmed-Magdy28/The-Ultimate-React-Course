@@ -12,7 +12,7 @@ export const FromMilisecondtoSecond = 1000;
 export const initialState = {
    questions: [],
    isLoading: false,
-   status: '',
+   appStatus: '',
    active: null,
    userAnswer: null,
    userPoints: 0,

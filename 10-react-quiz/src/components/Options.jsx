@@ -1,11 +1,14 @@
-function Options({ QuestionData, dispatch, userAnswer }) {
-   const { options, correctOption } = QuestionData;
-   const hasAnswered = userAnswer !== null;
+import { useQuizContext } from '../context/quizContext';
+
+function Options() {
+   const { state, dispatch } = useQuizContext();
+   const { options, correctOption } = state.questions.at(state.active);
+   const hasAnswered = state.userAnswer !== null;
 
    //
    const checkAnswer = (index) => {
-      if (userAnswer == null) return '';
-      const isSelected = userAnswer === index;
+      if (state.userAnswer == null) return '';
+      const isSelected = state.userAnswer === index;
       const correctAnswer = index === correctOption;
       if (isSelected && correctAnswer) return 'answer correct';
       if (isSelected && !correctAnswer) return 'answer wrong';

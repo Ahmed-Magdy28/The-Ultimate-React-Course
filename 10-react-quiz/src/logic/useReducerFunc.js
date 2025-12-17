@@ -6,20 +6,20 @@ export const useReducerFunc = (state, action) => {
             ...state,
             questions: action.data,
             isLoading: false,
-            status: 'ready',
+            appStatus: 'ready',
          };
       case 'dataFailed':
          return {
             ...state,
-            status: 'error',
+            appStatus: 'error',
             error: action.error,
          };
       case 'setloading':
-         return { ...state, isLoading: action.payload, status: 'loading' };
+         return { ...state, isLoading: action.payload, appStatus: 'loading' };
       case 'setError':
          return { ...state, error: action.error };
       case 'startQuiz':
-         return { ...state, status: 'active', active: 0 };
+         return { ...state, appStatus: 'active', active: 0 };
       case 'nextQuestion':
          return { ...state, active: state.active + 1, userAnswer: null };
       case 'prevQuestion':
@@ -43,7 +43,7 @@ export const useReducerFunc = (state, action) => {
       case 'quizFinished':
          return {
             ...state,
-            status: 'finished',
+            appStatus: 'finished',
             highScore:
                state.userPoints > state.highScore
                   ? state.userPoints
@@ -52,7 +52,7 @@ export const useReducerFunc = (state, action) => {
       case 'resetQuiz':
          return {
             ...state,
-            status: 'active',
+            appStatus: 'active',
             active: 0,
             userAnswer: null,
             userPoints: 0,
@@ -62,7 +62,8 @@ export const useReducerFunc = (state, action) => {
             ...state,
             secondsRemaining:
                state.secondsRemaining !== 0 ? state.secondsRemaining - 1 : 0,
-            status: state.secondsRemaining === 0 ? 'finished' : state.status,
+            appStatus:
+               state.secondsRemaining === 0 ? 'finished' : state.appStatus,
          };
 
       default:

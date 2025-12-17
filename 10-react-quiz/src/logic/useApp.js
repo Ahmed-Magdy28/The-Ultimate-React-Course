@@ -1,24 +1,22 @@
-import { useReducer, useEffect } from 'react';
-import { useReducerFunc } from './useReducerFunc';
-import { ApiUrl, initialState } from '../config';
+import { useEffect } from 'react';
+import { ApiUrl } from '../config';
 import { getDataFromAPI } from '../helper';
+import { useQuizContext } from '../context/quizContext';
 
 export const useApp = () => {
-   const [
-      {
-         questions,
-         error,
-         isLoading,
-         status,
-         active,
-         userPoints,
-         userAnswer,
-         totalPoints,
-         highScore,
-         secondsRemaining,
-      },
-      dispatch,
-   ] = useReducer(useReducerFunc, initialState);
+   // {
+   //    questions,
+   //    error,
+   //    isLoading,
+   //    status,
+   //    active,
+   //    userPoints,
+   //    userAnswer,
+   //    totalPoints,
+   //    highScore,
+   //    secondsRemaining,
+   // },
+   const { state, dispatch } = useQuizContext();
 
    useEffect(() => {
       const controller = new AbortController();
@@ -46,11 +44,11 @@ export const useApp = () => {
    }, []);
 
    useEffect(() => {
-      const CalcTotalPoints = questions
+      const CalcTotalPoints = state.questions
          .map((question) => question.points)
          .reduce((acc, cur) => acc + cur, 0);
       dispatch({ type: 'calcTotalPoints', payload: CalcTotalPoints });
-   }, [questions]);
+   }, [state.questions, dispatch]);
 
    const handleRestartQuiz = () => {
       dispatch({ type: 'resetQuiz' });
@@ -60,18 +58,7 @@ export const useApp = () => {
    };
 
    return {
-      questions,
-      error,
-      isLoading,
-      status,
-      active,
-      dispatch,
-      userPoints,
-      userAnswer,
-      totalPoints,
-      highScore,
       handleRestartQuiz,
       handleTimer,
-      secondsRemaining,
    };
 };

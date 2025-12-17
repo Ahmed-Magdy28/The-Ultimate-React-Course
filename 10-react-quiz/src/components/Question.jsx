@@ -2,38 +2,21 @@ import Options from './Options';
 import NextButton from './NextButton';
 import Footer from './Footer';
 import Timer from './Timer';
+import { useQuizContext } from '../context/quizContext';
 
-function Question({
-   QuestionData,
-   dispatch,
-   userAnswer,
-   totalQuestions,
-   activeQuestionIndex,
-   secondsRemaining,
-   handleTimer,
-}) {
+function Question() {
+   const { state } = useQuizContext();
+
    return (
       <>
          <div>
-            <h4>{QuestionData.question}</h4>
+            <h4>{state.questions.at(state.active).question}</h4>
 
-            <Options
-               QuestionData={QuestionData}
-               dispatch={dispatch}
-               userAnswer={userAnswer}
-            />
+            <Options />
             <Footer>
-               <Timer
-                  secondsRemaining={secondsRemaining}
-                  handleTimer={handleTimer}
-               />
+               <Timer />
 
-               <NextButton
-                  dispatch={dispatch}
-                  userAnswer={userAnswer}
-                  activeQuestionIndex={activeQuestionIndex}
-                  totalQuestions={totalQuestions}
-               />
+               <NextButton />
             </Footer>
          </div>
       </>

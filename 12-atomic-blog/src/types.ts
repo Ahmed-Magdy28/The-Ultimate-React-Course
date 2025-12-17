@@ -8,11 +8,10 @@ export type PostContextType = {
    posts: Post[];
    onClearPosts: () => void;
    onAddPost: (Post: Post) => void;
-};
-export type SearchContextType = {
    searchQuery: string;
    setSearchQuery: (query: string) => void;
 };
+
 export type UseAppReturnType = {
    Posts: Post[];
    searchedPosts: Post[];

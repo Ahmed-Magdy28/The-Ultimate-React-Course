@@ -1,9 +1,9 @@
-import { useContext } from 'react';
+import { memo } from 'react';
 import { Results } from './Results';
 import { SearchPosts } from './SearchPosts';
 import { usePostContext } from '../contexts/Context';
 
-export function Header() {
+export const Header = memo(function Header() {
    const { onClearPosts } = usePostContext();
    return (
       <header>
@@ -17,4 +17,4 @@ export function Header() {
          </div>
       </header>
    );
-}
+});

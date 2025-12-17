@@ -1,20 +1,18 @@
-function NextButton({
-   dispatch,
-   userAnswer,
-   activeQuestionIndex,
-   totalQuestions,
-}) {
-   if (userAnswer == null) return null;
+import { useQuizContext } from '../context/quizContext';
+
+function NextButton() {
+   const { state, dispatch } = useQuizContext();
+   if (state.userAnswer == null) return null;
 
    const handleNextQuestion = () => {
-      if (activeQuestionIndex === totalQuestions) {
+      if (state.active + 1 === state.questions.length) {
          dispatch({ type: 'quizFinished' });
       } else dispatch({ type: 'nextQuestion' });
    };
 
    return (
       <button className="btn btn-ui" onClick={handleNextQuestion}>
-         {activeQuestionIndex === totalQuestions ? 'Finish Quiz' : 'Next'}
+         {state.active + 1 === state.questions.length ? 'Finish Quiz' : 'Next'}
       </button>
    );
 }

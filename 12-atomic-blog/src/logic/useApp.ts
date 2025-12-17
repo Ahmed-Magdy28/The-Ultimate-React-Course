@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { faker } from '@faker-js/faker';
 import type { Post } from '../types';
 
@@ -11,44 +11,40 @@ export function createRandomPost(): Post {
 
 export const useApp = () => {
    const [posts, setPosts] = useState<Post[]>(() =>
-      Array.from({ length: 30 }, () => createRandomPost()),
+      Array.from({ length: 30 }, createRandomPost),
    );
-   const [searchQuery, setSearchQuery] = useState<string>('');
-   const [isFakeDark, setIsFakeDark] = useState<boolean>(false);
+   const [searchQuery, setSearchQuery] = useState('');
+   const [isFakeDark, setIsFakeDark] = useState(false);
 
-   // Derived state. These are the posts that will actually be displayed
-   const searchedPosts =
-      searchQuery.length > 0
-         ? posts.filter((post) =>
-              `${post.title} ${post.body}`
-                 .toLowerCase()
-                 .includes(searchQuery.toLowerCase()),
-           )
-         : posts;
+   // ✔️ Memoize derived state
+   const searchedPosts = useMemo(() => {
+      if (searchQuery.length === 0) return posts;
 
-   function handleAddPost(post: Post) {
-      setPosts((posts) => [post, ...posts]);
-   }
+      const q = searchQuery.toLowerCase();
+      return posts.filter((post) =>
+         `${post.title} ${post.body}`.toLowerCase().includes(q),
+      );
+   }, [posts, searchQuery]);
 
-   function handleClearPosts() {
+   const handleAddPost = useCallback((post: Post) => {
+      setPosts((p) => [post, ...p]);
+   }, []);
+
+   const handleClearPosts = useCallback(() => {
       setPosts([]);
-   }
+   }, []);
 
-   // Whenever `isFakeDark` changes, we toggle the `fake-dark-mode` class on the HTML element (see in "Elements" dev tool).
-   useEffect(
-      function () {
-         document.documentElement.classList.toggle('fake-dark-mode');
-      },
-      [isFakeDark],
-   );
+   useEffect(() => {
+      document.documentElement.classList.toggle('fake-dark-mode');
+   }, [isFakeDark]);
 
    return {
       posts,
       searchedPosts,
+      handleAddPost,
       handleClearPosts,
       searchQuery,
       setSearchQuery,
-      handleAddPost,
       isFakeDark,
       setIsFakeDark,
    };

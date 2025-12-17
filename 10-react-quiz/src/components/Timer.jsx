@@ -1,7 +1,12 @@
+import { useQuizContext } from '../context/quizContext';
 import { useTimer } from '../logic/useTimer';
 
-function Timer({ handleTimer, secondsRemaining }) {
-   const formattedTime = useTimer({ secondsRemaining, handleTimer });
+function Timer() {
+   const { state, handleTimer } = useQuizContext();
+   const formattedTime = useTimer({
+      secondsRemaining: state.secondsRemaining,
+      handleTimer,
+   });
 
    return <div className="timer">{formattedTime}</div>;
 }
