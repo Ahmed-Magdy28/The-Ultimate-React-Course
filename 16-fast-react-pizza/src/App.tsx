@@ -1,43 +1,42 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router';
+import Home from './ui/Home';
+import Menu from './features/menu/Menu';
+import Cart from './features/cart/Cart';
+import CreateOrder, { CreateOrderAction } from './features/order/CreateOrder';
+import Order from './features/order/Order';
+import AppLayout from './ui/AppLayout';
+import { menuLoader, orderLoader } from './utils/loaders';
+import { Error } from './ui/Error';
+import { action as updateOrderAction } from './features/order/UpdateOrder';
 
-function App() {
-   const [count, setCount] = useState(0);
-
-   return (
-      <>
-         <div>
-            <a
-               href="https://vite.dev"
-               rel="noreferrer noopener"
-               target="_blank"
-            >
-               <img src={viteLogo} className="logo" alt="Vite logo" />
-            </a>
-            <a
-               href="https://react.dev"
-               rel="noreferrer noopener"
-               target="_blank"
-            >
-               <img src={reactLogo} className="logo react" alt="React logo" />
-            </a>
-         </div>
-         <h1>Vite + React</h1>
-         <div className="card">
-            <button onClick={() => setCount((count) => count + 1)}>
-               count is {count}
-            </button>
-            <p>
-               Edit <code>src/App.tsx</code> and save to test HMR
-            </p>
-         </div>
-         <p className="read-the-docs">
-            Click on the Vite and React logos to learn more
-         </p>
-      </>
-   );
+const router = createBrowserRouter([
+   {
+      element: <AppLayout />,
+      errorElement: <Error />,
+      children: [
+         { path: '/', element: <Home /> },
+         {
+            path: '/menu',
+            element: <Menu />,
+            loader: menuLoader,
+            errorElement: <Error />,
+         },
+         { path: '/cart', element: <Cart /> },
+         {
+            path: '/order/new',
+            element: <CreateOrder />,
+            action: CreateOrderAction,
+         },
+         {
+            path: '/order/:orderId',
+            element: <Order />,
+            loader: orderLoader,
+            errorElement: <Error />,
+            action: updateOrderAction,
+         },
+      ],
+   },
+]);
+export default function App() {
+   return <RouterProvider router={router} />;
 }
-
-export default App;

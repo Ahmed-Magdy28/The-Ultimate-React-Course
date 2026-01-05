@@ -1,4 +1,4 @@
-import { API_Restaurant_URL } from '../config';
+import { API_Restaurant_URL } from '../utils/config';
 
 export async function getMenu() {
    const res = await fetch(`${API_Restaurant_URL}/menu`);

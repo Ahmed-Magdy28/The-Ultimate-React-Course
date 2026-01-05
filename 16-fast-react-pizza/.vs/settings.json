@@ -10,5 +10,6 @@
       "typescript",
       "typescriptreact"
    ],
-   "eslint.experimental.useFlatConfig": true
+   "eslint.experimental.useFlatConfig": true,
+   "css.customData": [".vscode/tailwind.json"]
 }

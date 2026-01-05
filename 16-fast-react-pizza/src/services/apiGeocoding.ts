@@ -1,4 +1,4 @@
-import { API_Geocoding_URL } from '../config';
+import { API_Geocoding_URL } from '../utils/config';
 
 export async function getAddress({
    latitude,
