@@ -36,19 +36,19 @@ function Checkbox({
    checked: boolean | undefined;
    onChange: ChangeEventHandler<HTMLInputElement> | undefined;
    disabled?: boolean;
-   id: string | undefined;
+   id: string;
    children: ReactNode;
 }) {
    return (
       <StyledCheckbox>
          <input
             type="checkbox"
-            id={id}
+            id={String(id)}
             checked={checked}
             onChange={onChange}
             disabled={disabled}
          />
-         <label htmlFor={!disabled ? id : ''}>{children}</label>
+         <label htmlFor={!disabled ? String(id) : ''}>{children}</label>
       </StyledCheckbox>
    );
 }

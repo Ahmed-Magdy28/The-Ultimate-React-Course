@@ -13,6 +13,9 @@ import PageNotFound from './pages/PageNotFound';
 import { GlobalStyles } from './styles/GlobalStyles';
 import AppLayout from './ui/AppLayout';
 import queryClient from './services/reactQuery';
+import Booking from './pages/Booking';
+import Checkin from './pages/Checkin';
+import SignUp from './pages/SignUp';
 
 export default function App() {
    return (
@@ -30,11 +33,14 @@ export default function App() {
                      <Route index path="dashboard" element={<Dashboard />} />
                      <Route path="account" element={<Account />} />
                      <Route path="bookings" element={<Bookings />} />
+                     <Route path="bookings/:bookingId" element={<Booking />} />
+                     <Route path="checkin/:bookingId" element={<Checkin />} />
                      <Route path="cabins" element={<Cabins />} />
                      <Route path="settings" element={<Settings />} />
                      <Route path="users" element={<Users />} />
                   </Route>
                   <Route path="login" element={<Login />} />
+                  <Route path="signup" element={<SignUp />} />
                   <Route path="*" element={<PageNotFound />} />
                </Routes>
             </BrowserRouter>

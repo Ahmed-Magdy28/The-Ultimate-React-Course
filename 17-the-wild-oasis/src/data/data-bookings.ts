@@ -1,5 +1,4 @@
 import { add } from 'date-fns';
-import type { BookingsType } from '../types';
 
 function fromToday(numDays: number, withTime = false) {
    const date = add(new Date(), { days: numDays });
@@ -7,7 +6,7 @@ function fromToday(numDays: number, withTime = false) {
    return date.toISOString().slice(0, -1);
 }
 
-export const bookings: BookingsType = [
+export const bookings = [
    // CABIN 001
    {
       created_at: fromToday(-20, true),

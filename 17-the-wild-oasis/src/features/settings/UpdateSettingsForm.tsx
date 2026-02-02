@@ -9,7 +9,7 @@ import useUpdateSetting from './hooks/useUpdateSetting';
 function UpdateSettingsForm() {
    const {
       isGettingSettings,
-      error,
+      // error,
       settings: {
          minBookingLength,
          maxBookingLength,

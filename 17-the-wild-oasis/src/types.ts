@@ -1,14 +1,31 @@
+import type { Dispatch, SetStateAction } from 'react';
+
 export type BookingType = {
+   id?: number;
    created_at: string;
    startDate: string;
    endDate: string;
-   cabinId: number;
-   guestId: number;
-   hasBreakfast: boolean;
-   observations: string;
-   isPaid: boolean;
+   numNights: number;
    numGuests: number;
+   totalPrice: number;
+   status: 'unconfirmed' | 'checked-in' | 'checked-out';
+   cabinId?: number;
+   cabinPrice?: number;
+   extrasPrice?: number;
+   guestId?: number;
+   hasBreakfast?: boolean;
+   observations?: string;
+   isPaid?: boolean;
+   guests: {
+      fullName: string;
+      email: string;
+      country?: string;
+      countryFlag?: string;
+      nationalID?: string;
+   };
+   cabins: { name: string };
 };
+
 export type BookingsType = BookingType[];
 
 export type CabinType = {
@@ -44,3 +61,19 @@ export type settingKeyType =
    | 'maxBookingLength'
    | 'maxGuestsPerBooking'
    | 'breakfastPrice';
+
+export type ModalContextType = {
+   close: () => void;
+   open: Dispatch<SetStateAction<string>>;
+   openName: string;
+};
+
+export interface MenuContextType {
+   openId: string;
+   close: () => void;
+   open: (id: string) => void;
+   position: { x: number; y: number } | undefined;
+   setPosition: React.Dispatch<
+      React.SetStateAction<{ x: number; y: number } | undefined>
+   >;
+}

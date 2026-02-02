@@ -1,10 +1,9 @@
-// import { supabaseUrl } from '../services/supabase';
+import { supabaseUrl } from '../services/supabase';
 
 import type { CabinsType } from '../types';
 
 // remember to fix the imageUrl when using supabase
-// const imageUrl = `${supabaseUrl}/storage/v1/object/public/cabin-images/`;
-const imageUrl = `/storage/v1/object/public/cabin-images/`;
+const imageUrl = `${supabaseUrl}/storage/v1/object/public/cabin-images/`;
 
 export const cabins: CabinsType = [
    {
