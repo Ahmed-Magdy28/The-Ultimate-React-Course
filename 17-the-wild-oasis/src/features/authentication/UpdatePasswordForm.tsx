@@ -3,21 +3,30 @@ import Button from '../../ui/Button';
 import Form from '../../ui/Form';
 import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';
+import useUpdateUser from './hooks/useUpdateUser';
 
-import { useUpdateUser } from './useUpdateUser';
+type UpdatePasswordFormValues = {
+   password: string;
+   passwordConfirm: string;
+};
 
-function UpdatePasswordForm() {
-   const { register, handleSubmit, formState, getValues, reset } = useForm();
+function UpdatePasswordForm({ onCloseModal }: { onCloseModal?: () => void }) {
+   const { register, handleSubmit, formState, getValues, reset } =
+      useForm<UpdatePasswordFormValues>();
    const { errors } = formState;
 
    const { updateUser, isUpdating } = useUpdateUser();
 
-   function onSubmit({ password }) {
-      updateUser({ password }, { onSuccess: reset });
+   function onSubmit({ password }: UpdatePasswordFormValues) {
+      updateUser({ password }, { onSuccess: () => reset() });
+      onCloseModal?.();
    }
 
    return (
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form
+         onSubmit={handleSubmit(onSubmit)}
+         type={onCloseModal ? 'modal' : 'regular'}
+      >
          <FormRow
             label="Password (min 8 characters)"
             error={errors?.password?.message}
@@ -55,7 +64,14 @@ function UpdatePasswordForm() {
             />
          </FormRow>
          <FormRow>
-            <Button onClick={reset} type="reset" variation="secondary">
+            <Button
+               onClick={() => {
+                  reset();
+                  onCloseModal?.();
+               }}
+               type="reset"
+               $variation="secondary"
+            >
                Cancel
             </Button>
             <Button disabled={isUpdating}>Update password</Button>

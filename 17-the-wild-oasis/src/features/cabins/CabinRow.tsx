@@ -97,13 +97,13 @@ export default function CabinRow({ cabin }: { cabin: CabinType }) {
                               Deplicate
                            </Menus.Button>
                            {/* Edit button */}
-                           <Modal.Open opensWidnowName="edit">
+                           <Modal.Open opensWindowName="edit">
                               <Menus.Button icon={<HiPencil />}>
                                  Edit
                               </Menus.Button>
                            </Modal.Open>
                            {/* Delete button */}
-                           <Modal.Open opensWidnowName="delete">
+                           <Modal.Open opensWindowName="delete">
                               <Menus.Button icon={<HiTrash />}>
                                  {isDeleting ? 'Loading...' : 'Delete'}
                               </Menus.Button>

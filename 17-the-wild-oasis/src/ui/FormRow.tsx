@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import type { ReactElement, ReactNode } from 'react';
+import type { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form';
 
 const StyledFormRow = styled.div`
    display: grid;
@@ -43,7 +44,12 @@ export default function FormRow({
    children,
 }: {
    label?: string;
-   error?: string;
+   error?:
+      | string
+      | FieldError
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      | Merge<FieldError, FieldErrorsImpl<any>>
+      | undefined;
    children?: ReactElement | ReactNode;
 }) {
    return (
@@ -56,7 +62,15 @@ export default function FormRow({
             </Label>
          )}
          {children}
-         {error && <Error>{error}</Error>}
+         {error && (
+            <Error>
+               {String(
+                  typeof error === 'string'
+                     ? error
+                     : error?.message || 'An error occurred',
+               )}
+            </Error>
+         )}
       </StyledFormRow>
    );
 }

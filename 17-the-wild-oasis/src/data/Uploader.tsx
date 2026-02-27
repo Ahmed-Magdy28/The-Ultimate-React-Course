@@ -1,157 +1,161 @@
-import { useState } from 'react';
-import { isFuture, isPast, isToday } from 'date-fns';
-import supabase from '../services/supabase';
-import Button from '../ui/Button';
-import { subtractDates } from '../utils/helpers';
+// import { useState } from 'react';
+// import toast from 'react-hot-toast';
+// import styled from 'styled-components';
+// import { isFuture, isPast, isToday } from 'date-fns';
+// import supabase from '../services/supabase';
+// import Button from '../ui/Button';
+// import { subtractDates } from '../utils/helpers';
 
-import { bookings } from './data-bookings';
-import { cabins } from './data-cabins';
-import { guests } from './data-guests';
-import type { Cabin } from '../../types';
+// import { bookings } from './data-bookings';
+// import { cabins } from './data-cabins';
+// import { guests } from './data-guests';
+// import type { CabinType } from '../types';
 
-// const originalSettings = {
-//   minBookingLength: 3,
-//   maxBookingLength: 30,
-//   maxGuestsPerBooking: 10,
-//   breakfastPrice: 15,
-// };
+// // const originalSettings = {
+// //   minBookingLength: 3,
+// //   maxBookingLength: 30,
+// //   maxGuestsPerBooking: 10,
+// //   breakfastPrice: 15,
+// // };
 
-async function deleteGuests() {
-   const { error } = await supabase.from('guests').delete().gt('id', 0);
-   if (error) console.log(error.message);
-}
+// const StyledUploader = styled.div`
+//    margin-top: auto;
+//    background-color: #e0e7ff;
+//    padding: 8px;
+//    border-radius: 5px;
+//    text-align: center;
+//    display: flex;
+//    flex-direction: column;
+//    gap: 8px;
+// `;
 
-async function deleteCabins() {
-   const { error } = await supabase.from('cabins').delete().gt('id', 0);
-   if (error) console.log(error.message);
-}
+// async function deleteGuests() {
+//    const { error } = await supabase.from('guests').delete().gt('id', 0);
+//    if (error) console.log(error.message);
+// }
 
-async function deleteBookings() {
-   const { error } = await supabase.from('bookings').delete().gt('id', 0);
-   if (error) console.log(error.message);
-}
+// async function deleteCabins() {
+//    const { error } = await supabase.from('cabins').delete().gt('id', 0);
+//    if (error) console.log(error.message);
+// }
 
-async function createGuests() {
-   const { error } = await supabase.from('guests').insert(guests);
-   if (error) console.log(error.message);
-}
+// async function deleteBookings() {
+//    const { error } = await supabase.from('bookings').delete().gt('id', 0);
+//    if (error) console.log(error.message);
+// }
 
-async function createCabins() {
-   const { error } = await supabase.from('cabins').insert(cabins);
-   if (error) console.log(error.message);
-}
+// async function createGuests() {
+//    const { error } = await supabase.from('guests').insert(guests);
+//    if (error) console.log(error.message);
+// }
 
-async function createBookings() {
-   // Bookings need a guestId and a cabinId. We can't tell Supabase IDs for each object, it will calculate them on its own. So it might be different for different people, especially after multiple uploads. Therefore, we need to first get all guestIds and cabinIds, and then replace the original IDs in the booking data with the actual ones from the DB
-   const { data: guestsIds } = await supabase
-      .from('guests')
-      .select('id')
-      .order('id');
-   const allGuestIds = guestsIds.map((cabin: Cabin) => cabin.id);
-   const { data: cabinsIds } = await supabase
-      .from('cabins')
-      .select('id')
-      .order('id');
-   const allCabinIds = cabinsIds.map((cabin: Cabin) => cabin.id);
+// async function createCabins() {
+//    const { error } = await supabase.from('cabins').insert(cabins);
+//    if (error) console.log(error.message);
+// }
 
-   const finalBookings = bookings.map((booking) => {
-      // Here relying on the order of cabins, as they don't have and ID yet
-      const cabin = cabins.at(booking.cabinId - 1);
-      const numNights =
-         cabin && subtractDates(booking.endDate, booking.startDate);
-      const cabinPrice =
-         cabin && numNights * (cabin.regularPrice - cabin.discount);
-      const extrasPrice = booking.hasBreakfast
-         ? numNights * 15 * booking.numGuests
-         : 0; // hardcoded breakfast price
-      const totalPrice = cabinPrice && cabinPrice + extrasPrice;
+// async function createBookings() {
+//    // Bookings need a guestId and a cabinId. We can't tell Supabase IDs for each object, it will calculate them on its own. So it might be different for different people, especially after multiple uploads. Therefore, we need to first get all guestIds and cabinIds, and then replace the original IDs in the booking data with the actual ones from the DB
+//    const { data: guestsIds } = await supabase
+//       .from('guests')
+//       .select('id')
+//       .order('id');
+//    const allGuestIds = guestsIds.map((cabin: Cabin) => cabin.id);
+//    const { data: cabinsIds } = await supabase
+//       .from('cabins')
+//       .select('id')
+//       .order('id');
+//    const allCabinIds = cabinsIds.map((cabin: CabinType) => cabin.id);
 
-      let status;
-      if (
-         isPast(new Date(booking.endDate)) &&
-         !isToday(new Date(booking.endDate))
-      )
-         status = 'checked-out';
-      if (
-         isFuture(new Date(booking.startDate)) ||
-         isToday(new Date(booking.startDate))
-      )
-         status = 'unconfirmed';
-      if (
-         (isFuture(new Date(booking.endDate)) ||
-            isToday(new Date(booking.endDate))) &&
-         isPast(new Date(booking.startDate)) &&
-         !isToday(new Date(booking.startDate))
-      )
-         status = 'checked-in';
+//    const finalBookings = bookings.map((booking) => {
+//       // Here relying on the order of cabins, as they don't have and ID yet
+//       const cabin = cabins.at(booking.cabinId - 1);
+//       const numNights =
+//          cabin && subtractDates(booking.endDate, booking.startDate);
+//       const cabinPrice =
+//          cabin && numNights * (cabin.regularPrice - cabin.discount);
+//       const extrasPrice = booking.hasBreakfast
+//          ? numNights * 15 * booking.numGuests
+//          : 0; // hardcoded breakfast price
+//       const totalPrice = cabinPrice && cabinPrice + extrasPrice;
 
-      return {
-         ...booking,
-         numNights,
-         cabinPrice,
-         extrasPrice,
-         totalPrice,
-         guestId: allGuestIds.at(booking.guestId - 1),
-         cabinId: allCabinIds.at(booking.cabinId - 1),
-         status,
-      };
-   });
+//       let status;
+//       if (
+//          isPast(new Date(booking.endDate)) &&
+//          !isToday(new Date(booking.endDate))
+//       )
+//          status = 'checked-out';
+//       if (
+//          isFuture(new Date(booking.startDate)) ||
+//          isToday(new Date(booking.startDate))
+//       )
+//          status = 'unconfirmed';
+//       if (
+//          (isFuture(new Date(booking.endDate)) ||
+//             isToday(new Date(booking.endDate))) &&
+//          isPast(new Date(booking.startDate)) &&
+//          !isToday(new Date(booking.startDate))
+//       )
+//          status = 'checked-in';
 
-   console.log(finalBookings);
+//       return {
+//          ...booking,
+//          numNights,
+//          cabinPrice,
+//          extrasPrice,
+//          totalPrice,
+//          guestId: allGuestIds.at(booking.guestId - 1),
+//          cabinId: allCabinIds.at(booking.cabinId - 1),
+//          status,
+//       };
+//    });
 
-   const { error } = await supabase.from('bookings').insert(finalBookings);
-   if (error) console.log(error.message);
-}
+//    console.log(finalBookings);
 
-function Uploader() {
-   const [isLoading, setIsLoading] = useState(false);
+//    const { error } = await supabase.from('bookings').insert(finalBookings);
+//    if (error) console.log(error.message);
+// }
 
-   async function uploadAll() {
-      setIsLoading(true);
-      // Bookings need to be deleted FIRST
-      await deleteBookings();
-      await deleteGuests();
-      await deleteCabins();
+// function Uploader() {
+//    const [isLoading, setIsLoading] = useState(false);
 
-      // Bookings need to be created LAST
-      await createGuests();
-      await createCabins();
-      await createBookings();
+//    async function uploadAll() {
+//       setIsLoading(true);
+//       // Bookings need to be deleted FIRST
+//       await deleteBookings();
+//       await deleteGuests();
+//       await deleteCabins();
 
-      setIsLoading(false);
-   }
+//       // Bookings need to be created LAST
+//       await createGuests();
+//       await createCabins();
+//       await createBookings();
 
-   async function uploadBookings() {
-      setIsLoading(true);
-      await deleteBookings();
-      await createBookings();
-      setIsLoading(false);
-   }
+//       setIsLoading(false);
+//       toast.success('All data uploaded successfully!');
+//    }
 
-   return (
-      <div
-         style={{
-            marginTop: 'auto',
-            backgroundColor: '#e0e7ff',
-            padding: '8px',
-            borderRadius: '5px',
-            textAlign: 'center',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '8px',
-         }}
-      >
-         <h3>SAMPLE DATA</h3>
+//    async function uploadBookings() {
+//       setIsLoading(true);
+//       await deleteBookings();
+//       await createBookings();
+//       setIsLoading(false);
+//       toast.success('Bookings uploaded successfully!');
+//    }
 
-         <Button onClick={uploadAll} disabled={isLoading}>
-            Upload ALL
-         </Button>
+//    return (
+//       <StyledUploader>
+//          <h3>SAMPLE DATA</h3>
 
-         <Button onClick={uploadBookings} disabled={isLoading}>
-            Upload bookings ONLY
-         </Button>
-      </div>
-   );
-}
+//          <Button onClick={uploadAll} disabled={isLoading}>
+//             Upload ALL
+//          </Button>
 
-export default Uploader;
+//          <Button onClick={uploadBookings} disabled={isLoading}>
+//             Upload bookings ONLY
+//          </Button>
+//       </StyledUploader>
+//    );
+// }
+
+// export default Uploader;

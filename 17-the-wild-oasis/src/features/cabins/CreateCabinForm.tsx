@@ -22,10 +22,9 @@ function CreateCabinForm({
    const { isEditing, updateCabin } = useUpdateCabin();
 
    const isLoading = isEditing || isCreating;
-   const { register, handleSubmit, reset, getValues, formState } =
-      useForm<CabinType>({
-         defaultValues: cabinToEdit?.id ? cabinToEdit : {},
-      });
+   const { register, handleSubmit, reset, formState } = useForm<CabinType>({
+      defaultValues: cabinToEdit?.id ? cabinToEdit : {},
+   });
    const { errors } = formState;
 
    function onSubmit(cabin: CabinType) {
@@ -103,8 +102,8 @@ function CreateCabinForm({
                defaultValue={0}
                {...register('discount', {
                   required: 'Discount price is required',
-                  validate: (value) =>
-                     value <= getValues('regularPrice') ||
+                  validate: (value, formValues) =>
+                     value <= formValues.regularPrice ||
                      'Discount should be less than regular price',
                })}
             />

@@ -10,13 +10,21 @@ import SpinnerMini from '../../ui/SpinnerMini';
 // password: 123456789
 
 function LoginForm() {
-   const [email, setEmail] = useState('test@example.com');
-   const [password, setPassword] = useState('123456789');
+   const [email, setEmail] = useState('ahmedmagdy2849@gmail.com');
+   const [password, setPassword] = useState('12345678');
    const { login, isLoggingIn } = useLogin();
    function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
       e.preventDefault();
       if (!email || !password) return;
-      login({ email, password });
+      login(
+         { email, password },
+         {
+            onError: () => {
+               setPassword('');
+               setEmail('');
+            },
+         },
+      );
    }
 
    return (

@@ -1,4 +1,8 @@
 import styled from 'styled-components';
+import type { FallbackProps } from 'react-error-boundary';
+import Heading from './Heading';
+import { GlobalStyles } from '../styles/GlobalStyles';
+import Button from './Button';
 
 export const StyledErrorFallback = styled.main`
    height: 100vh;
@@ -29,3 +33,26 @@ export const Box = styled.div`
       color: var(--color-grey-500);
    }
 `;
+export default function ErrorFallback(fallback: FallbackProps) {
+   const message =
+      fallback instanceof Error
+         ? fallback.message
+         : 'An unexpected error occurred';
+
+   return (
+      <>
+         <GlobalStyles />
+         <StyledErrorFallback>
+            <Box>
+               <Heading as="h1">Something went wrong</Heading>
+
+               <p>{message}</p>
+
+               <Button $size="large" onClick={fallback.resetErrorBoundary}>
+                  Try again
+               </Button>
+            </Box>
+         </StyledErrorFallback>
+      </>
+   );
+}

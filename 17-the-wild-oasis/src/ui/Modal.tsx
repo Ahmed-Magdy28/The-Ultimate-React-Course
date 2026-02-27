@@ -83,7 +83,13 @@ function Open({
    opensWindowName,
 }: {
    children: ReactElement<{ onClick: () => void }>;
-   opensWindowName: 'cabin-form' | 'table' | 'edit' | 'delete';
+   opensWindowName:
+      | 'cabin-form'
+      | 'table'
+      | 'edit'
+      | 'delete'
+      | 'password'
+      | 'user-data';
 }) {
    const { open } = useContext(ModalContext);
    return cloneElement(children, { onClick: () => open(opensWindowName) });
@@ -94,7 +100,7 @@ function Window({
    name,
 }: {
    children: ReactElement<{ onCloseModal: () => void }>;
-   name: 'table' | 'cabin-form' | 'edit' | 'delete';
+   name: 'table' | 'cabin-form' | 'edit' | 'delete' | 'password' | 'user-data';
 }) {
    const { openName, close } = useContext(ModalContext);
    const ref = useOutsideClick(close) as React.RefObject<HTMLDivElement>;

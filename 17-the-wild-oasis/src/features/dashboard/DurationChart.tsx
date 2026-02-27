@@ -1,4 +1,8 @@
 import styled from 'styled-components';
+import { Legend, Pie, PieChart, ResponsiveContainer } from 'recharts';
+import type { BookingsType } from '../../types';
+import Heading from '../../ui/Heading';
+import { useDarkMode } from '../../context/useDarkMode';
 
 const ChartBox = styled.div`
    /* Box */
@@ -18,46 +22,61 @@ const ChartBox = styled.div`
    }
 `;
 
+type StartDataItem = {
+   duration: string;
+   value: number;
+   fill: string;
+   stroke: string;
+};
+
 const startDataLight = [
    {
       duration: '1 night',
       value: 0,
-      color: '#ef4444',
+      fill: '#ef4444',
+      stroke: '#ef4444',
    },
    {
       duration: '2 nights',
       value: 0,
-      color: '#f97316',
+      fill: '#f97316',
+      stroke: '#f97316',
    },
    {
       duration: '3 nights',
       value: 0,
-      color: '#eab308',
+      fill: '#eab308',
+      stroke: '#eab308',
    },
    {
       duration: '4-5 nights',
       value: 0,
-      color: '#84cc16',
+      fill: '#84cc16',
+      stroke: '#84cc16',
    },
    {
       duration: '6-7 nights',
       value: 0,
-      color: '#22c55e',
+      fill: '#22c55e',
+      stroke: '#22c55e',
    },
    {
       duration: '8-14 nights',
       value: 0,
-      color: '#14b8a6',
+      fill: '#14b8a6',
+      stroke: '#14b8a6',
    },
    {
       duration: '15-21 nights',
       value: 0,
-      color: '#3b82f6',
+      fill: '#3b82f6',
+      stroke: '#3b82f6',
    },
    {
       duration: '21+ nights',
       value: 0,
-      color: '#a855f7',
+      fill: '#a855f7',
+      stroke: '#a855f7',
    },
 ];
 
@@ -65,55 +84,66 @@ const startDataDark = [
    {
       duration: '1 night',
       value: 0,
-      color: '#b91c1c',
+      fill: '#b91c1c',
+      stroke: '#b91c1c',
    },
    {
       duration: '2 nights',
       value: 0,
-      color: '#c2410c',
+      fill: '#c2410c',
+      stroke: '#c2410c',
    },
    {
       duration: '3 nights',
       value: 0,
-      color: '#a16207',
+      fill: '#a16207',
+      stroke: '#a16207',
    },
    {
       duration: '4-5 nights',
       value: 0,
-      color: '#4d7c0f',
+      fill: '#4d7c0f',
+      stroke: '#4d7c0f',
    },
    {
       duration: '6-7 nights',
       value: 0,
-      color: '#15803d',
+      fill: '#15803d',
+      stroke: '#15803d',
    },
    {
       duration: '8-14 nights',
       value: 0,
-      color: '#0f766e',
+      fill: '#0f766e',
+      stroke: '#0f766e',
    },
    {
       duration: '15-21 nights',
       value: 0,
-      color: '#1d4ed8',
+      fill: '#1d4ed8',
+      stroke: '#1d4ed8',
    },
    {
       duration: '21+ nights',
       value: 0,
-      color: '#7e22ce',
+      fill: '#7e22ce',
+      stroke: '#7e22ce',
    },
 ];
 
-function prepareData(startData, stays) {
+function prepareData(
+   startData: StartDataItem[],
+   stays: BookingsType | undefined,
+): StartDataItem[] {
    // A bit ugly code, but sometimes this is what it takes when working with real data 😅
 
-   function incArrayValue(arr, field) {
+   function incArrayValue(arr: StartDataItem[], field: string) {
       return arr.map((obj) =>
          obj.duration === field ? { ...obj, value: obj.value + 1 } : obj,
       );
    }
 
-   const data = stays
+   const data = (stays ?? [])
       .reduce((arr, cur) => {
          const num = cur.numNights;
          if (num === 1) return incArrayValue(arr, '1 night');
@@ -129,4 +159,44 @@ function prepareData(startData, stays) {
       .filter((obj) => obj.value > 0);
 
    return data;
+}
+
+export default function DurationChart({
+   confirmedStays,
+   stays,
+}: {
+   confirmedStays: BookingsType | undefined;
+   stays: BookingsType | undefined;
+}) {
+   void confirmedStays;
+   const { isDarkMode } = useDarkMode();
+   const startData = isDarkMode ? startDataDark : startDataLight;
+   return (
+      <ChartBox>
+         <Heading as="h2">Stay duration summary</Heading>
+         <ResponsiveContainer width="100%" height={240}>
+            <PieChart>
+               <Pie
+                  data={prepareData(startData, stays)}
+                  nameKey="duration"
+                  dataKey="value"
+                  innerRadius={80}
+                  outerRadius={110}
+                  cx="40%"
+                  cy="50%"
+                  paddingAngle={3}
+               >
+                  <Legend
+                     verticalAlign="middle"
+                     align="right"
+                     width="30%"
+                     layout="vertical"
+                     iconSize={15}
+                     iconType="circle"
+                  />
+               </Pie>
+            </PieChart>
+         </ResponsiveContainer>
+      </ChartBox>
+   );
 }

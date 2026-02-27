@@ -19,6 +19,9 @@ function Login() {
          <Logo />
          <Heading as="h4">Log in to your Account</Heading>
          <LoginForm />
+         <p>
+            Don&apos;t have an account? <a href="/signup">Sign up</a>
+         </p>
       </LoginLayout>
    );
 }

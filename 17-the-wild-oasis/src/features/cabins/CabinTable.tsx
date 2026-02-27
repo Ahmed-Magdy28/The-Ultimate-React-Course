@@ -11,7 +11,7 @@ export default function CabinTable() {
    const { cabins, isGettingCabins } = useGetCabins();
    const processedCabins = useCabinFiltersAndSort(cabins);
    if (isGettingCabins) return <Spinner />;
-   if (!processedCabins?.length) return <Empty resource="Bookings" />;
+   if (!processedCabins?.length) return <Empty resource="cabins" />;
 
    return (
       <Menus>

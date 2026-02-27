@@ -6,7 +6,7 @@ export default function AddCabin() {
    return (
       <div>
          <Modal>
-            <Modal.Open opensWidnowName="cabin-form">
+            <Modal.Open opensWindowName="cabin-form">
                <Button>Add new cabins</Button>
             </Modal.Open>
             <Modal.Window name="cabin-form">

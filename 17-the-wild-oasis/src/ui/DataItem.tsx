@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import type { IconType } from 'react-icons';
 import styled from 'styled-components';
 
 const StyledDataItem = styled.div`
@@ -34,7 +33,7 @@ function DataItem({
    return (
       <StyledDataItem>
          <Label>
-            {icon as unknown as string}
+            {icon}
             <span>{label}</span>
          </Label>
          {children}

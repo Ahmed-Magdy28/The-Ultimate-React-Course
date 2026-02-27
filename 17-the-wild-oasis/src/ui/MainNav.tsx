@@ -55,7 +55,7 @@ export const StyledNavLink = styled(NavLink)`
 export default function MainNav() {
    return (
       <nav>
-         <NavList>
+         <NavList as="ul">
             <li>
                <StyledNavLink to="/dashboard">
                   <HiOutlineHome />

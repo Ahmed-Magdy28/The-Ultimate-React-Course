@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import useUser from './hooks/useUser';
 
 const StyledUserAvatar = styled.div`
    display: flex;
@@ -11,11 +12,22 @@ const StyledUserAvatar = styled.div`
 
 const Avatar = styled.img`
    display: block;
-   width: 4rem;
-   width: 3.6rem;
+   width: 3.2rem;
+   height: 3.2rem;
    aspect-ratio: 1;
    object-fit: cover;
    object-position: center;
    border-radius: 50%;
    outline: 2px solid var(--color-grey-100);
 `;
+
+export default function UserAvatar() {
+   const { user } = useUser();
+   const { fullName, avatar } = user?.user_metadata || {};
+   return (
+      <StyledUserAvatar>
+         <Avatar src={avatar || '/default-user.jpg'} alt={fullName} />
+         <span>{fullName}</span>
+      </StyledUserAvatar>
+   );
+}
