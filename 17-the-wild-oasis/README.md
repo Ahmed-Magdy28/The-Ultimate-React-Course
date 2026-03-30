@@ -1,69 +1,68 @@
-# React + TypeScript + Vite
+# The Wild Oasis
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Wild Oasis is a hotel management dashboard built for staff members who need to manage daily operations from one place. The app brings together cabins, bookings, guests, check-in and check-out workflows, account management, and business insights in a single interface.
 
-Currently, two official plugins are available:
+This project is built with React, TypeScript, and Vite, and uses Supabase for backend services. Data fetching and server state are handled with TanStack React Query, while the UI is styled with `styled-components`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Secure authentication and protected routes
+- Dashboard with business stats and charts
+- Cabin management with create, update, and delete flows
+- Booking management with detailed booking views
+- Guest management tools
+- Check-in and check-out actions for current stays
+- App settings and account update screens
+- Dark mode support
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React 19
+- TypeScript
+- Vite
+- TanStack React Query
+- Supabase
+- Styled Components
+- React Hook Form
+- React Router
+- Recharts
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Project Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The codebase is organized by feature so product areas are easier to maintain:
+
+- `src/features` contains domain features like cabins, bookings, guests, dashboard, settings, authentication, and check-in/out
+- `src/pages` contains route-level pages
+- `src/services` contains API and Supabase logic
+- `src/ui` contains reusable UI building blocks
+- `src/hooks` and `src/context` contain shared app logic
+
+## Getting Started
+
+1. Install dependencies:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Start the development server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+3. Open the app in your browser at `http://localhost:4000`
+
+## Available Scripts
+
+- `npm run dev` starts the Vite development server on port `4000`
+- `npm run build` creates a production build
+- `npm run preview` previews the production build locally
+- `npm run lint` runs ESLint
+- `npm run test` runs Vitest
+
+## Notes
+
+- The app is connected to Supabase through the service setup in `src/services/supabase.ts`
+- React Query Devtools are included during development
+- Toast notifications and route protection are already wired into the app shell
