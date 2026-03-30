@@ -7,7 +7,6 @@ import Menus from '../../ui/Menus';
 import Modal from '../../ui/Modal';
 import ConfirmDelete from '../../ui/ConfirmDelete';
 import { useDeleteGuest } from './hooks/useDeleteGuest';
-import useUpdateGuest from './hooks/useUpdateGuest';
 import { Flag } from '../../ui/Flag';
 import CreateGuestForm from './CreateGuestForm';
 
@@ -28,7 +27,6 @@ const Stacked = styled.div`
 
 function GuestsRow({ guest }: { guest: GuestType }) {
    const { deleteGuest, isDeleting } = useDeleteGuest();
-   const { isEditing, errorEditing, updateGuest } = useUpdateGuest();
    const {
       id: guestId,
       fullName: guestName,
