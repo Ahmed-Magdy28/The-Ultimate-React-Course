@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const StyledDataItem = styled.div`
    display: flex;
    align-items: center;
+   flex-wrap: wrap;
    gap: 1.6rem;
    padding: 0.8rem 0;
 `;

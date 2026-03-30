@@ -8,7 +8,7 @@ import Bookings from './pages/Bookings';
 import Cabins from './pages/Cabins';
 import Login from './pages/Login';
 import Settings from './pages/Settings';
-import Users from './pages/Users';
+import Guests from './pages/Guests';
 import PageNotFound from './pages/PageNotFound';
 import { GlobalStyles } from './styles/GlobalStyles';
 import AppLayout from './ui/AppLayout';
@@ -52,7 +52,7 @@ export default function App() {
                         />
                         <Route path="cabins" element={<Cabins />} />
                         <Route path="settings" element={<Settings />} />
-                        <Route path="users" element={<Users />} />
+                        <Route path="guests" element={<Guests />} />
                      </Route>
                      <Route path="login" element={<Login />} />
                      <Route path="signup" element={<SignUp />} />

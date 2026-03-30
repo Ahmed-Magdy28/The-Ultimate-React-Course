@@ -8,7 +8,7 @@ const Heading = styled.h1<HeadingProps>`
    ${(props) =>
       props.as === 'h1' &&
       css`
-         font-size: 3rem;
+         font-size: clamp(2.2rem, 2.6vw, 3rem);
          font-weight: 600;
          /* background-color: yellow; */
       `}
@@ -29,7 +29,7 @@ const Heading = styled.h1<HeadingProps>`
    ${(props) =>
       props.as === 'h4' &&
       css`
-         font-size: 3rem;
+         font-size: clamp(2.2rem, 2.6vw, 3rem);
          font-weight: 600;
          text-align: center;
       `}

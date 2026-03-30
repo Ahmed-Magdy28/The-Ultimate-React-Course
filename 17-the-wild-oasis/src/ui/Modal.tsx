@@ -22,6 +22,13 @@ const StyledModal = styled.div`
    box-shadow: var(--shadow-lg);
    padding: 3.2rem 4rem;
    transition: all 0.5s;
+   width: min(84rem, calc(100vw - 3.2rem));
+   max-height: calc(100vh - 3.2rem);
+   overflow: auto;
+
+   @media (max-width: 900px) {
+      padding: 2.4rem 1.6rem;
+   }
 `;
 
 const Overlay = styled.div`
@@ -89,7 +96,9 @@ function Open({
       | 'edit'
       | 'delete'
       | 'password'
-      | 'user-data';
+      | 'booking-form'
+      | 'user-data'
+      | 'guest-form';
 }) {
    const { open } = useContext(ModalContext);
    return cloneElement(children, { onClick: () => open(opensWindowName) });
@@ -100,7 +109,15 @@ function Window({
    name,
 }: {
    children: ReactElement<{ onCloseModal: () => void }>;
-   name: 'table' | 'cabin-form' | 'edit' | 'delete' | 'password' | 'user-data';
+   name:
+      | 'table'
+      | 'cabin-form'
+      | 'edit'
+      | 'delete'
+      | 'password'
+      | 'user-data'
+      | 'booking-form'
+      | 'guest-form';
 }) {
    const { openName, close } = useContext(ModalContext);
    const ref = useOutsideClick(close) as React.RefObject<HTMLDivElement>;

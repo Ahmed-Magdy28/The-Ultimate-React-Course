@@ -11,6 +11,12 @@ const Row = styled.div<RowType>`
          ? css`
               justify-content: space-between;
               align-items: center;
+              gap: 1.6rem;
+
+              @media (max-width: 900px) {
+                 flex-direction: column;
+                 align-items: flex-start;
+              }
            `
          : css`
               flex-direction: column;

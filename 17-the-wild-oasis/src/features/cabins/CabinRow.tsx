@@ -89,12 +89,12 @@ export default function CabinRow({ cabin }: { cabin: CabinType }) {
                         <Menus.Toggle id={String(cabinId)} />
 
                         <Menus.List id={String(cabinId)}>
-                           {/* Deplicate button */}
+                           {/* Duplicate button */}
                            <Menus.Button
                               icon={<HiSquare2Stack />}
                               onClick={handleDuplicate}
                            >
-                              Deplicate
+                              Duplicate
                            </Menus.Button>
                            {/* Edit button */}
                            <Modal.Open opensWindowName="edit">

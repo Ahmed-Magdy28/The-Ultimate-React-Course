@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
-import type { BookingType } from '../../../types';
+import type { BookingMutationType } from '../../../types';
 import { createBookingAPI } from '../../../services/apiBookings';
 
 export default function useCreateBooking() {
@@ -11,15 +11,15 @@ export default function useCreateBooking() {
       mutate: createBooking,
       error: errorCreating,
    } = useMutation({
-      mutationFn: ({ Booking }: { Booking: BookingType }) =>
-         createBookingAPI(Booking),
+      mutationFn: ({ booking }: { booking: BookingMutationType }) =>
+         createBookingAPI(booking),
       onSuccess: () => {
-         toast.success('New cabin created successfully');
-         queryClient.invalidateQueries({ queryKey: ['cabins'] });
+         toast.success('New booking created successfully');
+         queryClient.invalidateQueries({ queryKey: ['bookings'] });
       },
-      onError: () => {
-         toast.error('Failed to Create booking ');
-         console.error(errorCreating);
+      onError: (error) => {
+         toast.error('Failed to create booking');
+         console.error(error);
       },
    });
 

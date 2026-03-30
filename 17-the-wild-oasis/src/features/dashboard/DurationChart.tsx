@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Legend, Pie, PieChart, ResponsiveContainer } from 'recharts';
+import { Label, Pie, PieChart, ResponsiveContainer } from 'recharts';
 import type { BookingsType } from '../../types';
 import Heading from '../../ui/Heading';
 import { useDarkMode } from '../../context/useDarkMode';
@@ -19,6 +19,14 @@ const ChartBox = styled.div`
 
    & .recharts-pie-label-text {
       font-weight: 600;
+   }
+
+   @media (max-width: 1200px) {
+      grid-column: 1 / -1;
+   }
+
+   @media (max-width: 700px) {
+      padding: 2rem 1.6rem;
    }
 `;
 
@@ -174,26 +182,28 @@ export default function DurationChart({
    return (
       <ChartBox>
          <Heading as="h2">Stay duration summary</Heading>
-         <ResponsiveContainer width="100%" height={240}>
+         <ResponsiveContainer width="100%" height={220}>
             <PieChart>
                <Pie
                   data={prepareData(startData, stays)}
                   nameKey="duration"
                   dataKey="value"
+                  width={'50%'}
+                  height={'50%'}
                   innerRadius={80}
                   outerRadius={110}
-                  cx="40%"
+                  cx="50%"
                   cy="50%"
                   paddingAngle={3}
                >
-                  <Legend
-                     verticalAlign="middle"
+                  <Label />
+                  {/* <Legend
+                     verticalAlign="top"
                      align="right"
-                     width="30%"
-                     layout="vertical"
-                     iconSize={15}
+                     iconSize={10}
                      iconType="circle"
-                  />
+                     wrapperStyle={{ paddingTop: '0.5rem' }}
+                  /> */}
                </Pie>
             </PieChart>
          </ResponsiveContainer>

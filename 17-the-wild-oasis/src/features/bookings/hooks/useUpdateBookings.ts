@@ -1,6 +1,6 @@
 import { toast } from 'react-hot-toast';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import type { BookingType } from '../../../types';
+import type { BookingMutationType } from '../../../types';
 import { updateBookingAPI } from '../../../services/apiBookings';
 
 export default function useUpdateBooking() {
@@ -11,15 +11,20 @@ export default function useUpdateBooking() {
       mutate: updateBooking,
       error: errorEditing,
    } = useMutation({
-      mutationFn: ({ booking, id }: { booking: BookingType; id: number }) =>
-         updateBookingAPI(booking, id),
+      mutationFn: ({
+         booking,
+         id,
+      }: {
+         booking: BookingMutationType;
+         id: number;
+      }) => updateBookingAPI(booking, id),
       onSuccess: () => {
-         toast.success('Cabin  successfully Edited');
-         queryClient.invalidateQueries({ queryKey: ['cabins'] });
+         toast.success('Booking successfully edited');
+         queryClient.invalidateQueries({ queryKey: ['bookings'] });
       },
-      onError: () => {
-         toast.error('Failed to Create cabin ');
-         console.error(errorEditing?.message);
+      onError: (error) => {
+         toast.error('Failed to update booking');
+         console.error(error);
       },
    });
 

@@ -26,6 +26,8 @@ export type BookingType = {
    cabins: { name: string };
 };
 
+export type BookingMutationType = Omit<BookingType, 'guests' | 'cabins'>;
+
 export type BookingsType = BookingType[];
 
 export type CabinType = {
@@ -41,11 +43,13 @@ export type CabinType = {
 export type CabinsType = CabinType[];
 
 export type GuestType = {
+   id?: number;
    fullName: string;
    email: string;
    nationality: string;
    nationalID: string;
    countryFlag: string;
+   phoneNumber?: string;
 };
 export type GuestsType = GuestType[];
 

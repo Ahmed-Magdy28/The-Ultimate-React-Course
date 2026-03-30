@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { format, isToday } from 'date-fns';
 import {
    HiArrowDownOnSquare,
+   HiPencil,
    HiArrowUpOnSquare,
    HiEye,
    HiTrash,
@@ -18,6 +19,7 @@ import Modal from '../../ui/Modal';
 import { useDeleteBooking } from './hooks/useDeleteBookings';
 import ConfirmDelete from '../../ui/ConfirmDelete';
 import useCheckout from '../check-in-out/hooks/useCheckout';
+import CreateBookingForm from './CreateBookingForm';
 
 const Cabin = styled.div`
    font-size: 1.6rem;
@@ -109,6 +111,12 @@ function BookingRow({ booking }: { booking: BookingType }) {
                   </Menus.Button>
 
                   {/* Edit button */}
+                  <Modal.Open opensWindowName="edit">
+                     <Menus.Button icon={<HiPencil />}>
+                        Edit booking
+                     </Menus.Button>
+                  </Modal.Open>
+
                   {status === 'unconfirmed' && (
                      <Menus.Button
                         icon={<HiArrowDownOnSquare />}
@@ -143,6 +151,9 @@ function BookingRow({ booking }: { booking: BookingType }) {
                      disabled={isDeleting}
                      onConfirm={() => deleteBooking(Number(bookingId))}
                   />
+               </Modal.Window>
+               <Modal.Window name="edit">
+                  <CreateBookingForm bookingToEdit={booking} />
                </Modal.Window>
             </Menus.Menu>
          </Modal>

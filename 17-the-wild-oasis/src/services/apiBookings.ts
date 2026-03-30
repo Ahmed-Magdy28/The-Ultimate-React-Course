@@ -1,5 +1,5 @@
 import { max_rows_per_page } from '../utils/config';
-import type { BookingsType, BookingType } from '../types';
+import type { BookingsType, BookingMutationType } from '../types';
 import { getToday } from '../utils/helpers';
 import supabase from './supabase';
 
@@ -49,7 +49,7 @@ export async function getBookings({
 }
 
 // create a booking
-export async function createBookingAPI(booking: BookingType) {
+export async function createBookingAPI(booking: BookingMutationType) {
    // Insert a row
    const { data, error } = await supabase
       .from('bookings')
@@ -135,7 +135,10 @@ export async function getStaysTodayActivityAPI() {
 }
 
 // update a booking
-export async function updateBookingAPI(booking: BookingType, id: number) {
+export async function updateBookingAPI(
+   booking: BookingMutationType,
+   id: number,
+) {
    const { data, error } = await supabase
       .from('bookings')
       .update(booking)

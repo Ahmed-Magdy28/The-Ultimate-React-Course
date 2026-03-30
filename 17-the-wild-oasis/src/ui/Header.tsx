@@ -9,6 +9,10 @@ const StyledHeader = styled.header`
    justify-content: flex-end;
    align-items: center;
    gap: 2.4rem;
+
+   @media (max-width: 900px) {
+      padding: 1.2rem 1.6rem;
+   }
 `;
 
 export default function Header() {

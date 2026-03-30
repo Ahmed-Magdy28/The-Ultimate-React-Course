@@ -7,7 +7,7 @@ const StyledTable = styled.div`
    font-size: 1.4rem;
    background-color: var(--color-grey-0);
    border-radius: 7px;
-   overflow: hidden;
+   overflow-x: auto;
 `;
 
 const CommonRow = styled.div<{ $columns: string }>`
@@ -16,6 +16,8 @@ const CommonRow = styled.div<{ $columns: string }>`
    column-gap: 2.4rem;
    align-items: center;
    transition: none;
+   width: max-content;
+   min-width: 100%;
 `;
 
 const StyledHeader = styled(CommonRow)`
