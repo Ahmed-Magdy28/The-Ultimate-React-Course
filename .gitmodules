@@ -1,3 +1,6 @@
 [submodule "16-fast-react-pizza"]
 	path = 16-fast-react-pizza
 	url = https://github.com/Ahmed-Magdy28/fast-react-pizza.git
+[submodule "the-wild-oasis"]
+	path = the-wild-oasis
+	url = https://github.com/Ahmed-Magdy28/the-wild-oasis.git
